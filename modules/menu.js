@@ -1,7 +1,7 @@
 import { select } from '@inquirer/prompts';
 
-const menu = () => {
-    select({
+const menu = async () => {
+    let result = await select({
         message: 'Menu',
         choices: [
             {
@@ -14,6 +14,8 @@ const menu = () => {
             },
         ],
     });
+
+    if (result === 1) process.exit();
 };
 
 export default menu;

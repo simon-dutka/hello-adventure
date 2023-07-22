@@ -1,5 +1,5 @@
-import title from '../utilities/title.js';
-import menu from '../utilities/menu.js';
+import title from '../modules/title.js';
+import menu from '../modules/menu.js';
 
 console.clear();
 
