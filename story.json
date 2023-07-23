@@ -1,0 +1,28 @@
+{
+    "messages": [
+        {
+            "id": 0,
+            "message": "message 0",
+            "firstChoice": 0,
+            "secondChoice": 1
+        },
+        {
+            "id": 1,
+            "message": "message 1",
+            "firstChoice": 2,
+            "secondChoice": 3
+        }
+    ],
+    "choices": [
+        {
+            "id": 0,
+            "name": "choice 1",
+            "nextMessageId": 1
+        },
+        {
+            "id": 1,
+            "name": "choice 2",
+            "nextMessageId": 2
+        }
+    ]
+}
