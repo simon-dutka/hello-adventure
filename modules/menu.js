@@ -3,7 +3,7 @@ import gameplay from './gameplay.js';
 
 const menu = async () => {
     let menuChoice = await select({
-        message: 'Menu',
+        message: '',
         choices: [
             {
                 name: 'Start Game',

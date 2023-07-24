@@ -1,5 +1,6 @@
 import { readFile } from 'node:fs';
 import { select } from '@inquirer/prompts';
+import title from './title.js';
 
 // While game is on this value is true
 let gameStatus = true;
@@ -12,6 +13,8 @@ const gameplay = () => {
         let currentMessageId, move;
 
         while (gameStatus) {
+            title();
+
             currentMessageId === undefined
                 ? (currentMessageId = 0)
                 : (currentMessageId = move);
@@ -22,7 +25,6 @@ const gameplay = () => {
             let firstChoiceValue =
                 story.choices[story.messages[currentMessageId].firstChoice]
                     .nextMessageId;
-
             let secondChoiceName =
                 story.choices[story.messages[currentMessageId].secondChoice]
                     .name;
@@ -43,6 +45,8 @@ const gameplay = () => {
                     },
                 ],
             });
+
+            console.clear();
         }
     });
 };
