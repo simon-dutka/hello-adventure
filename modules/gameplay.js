@@ -16,19 +16,30 @@ const gameplay = () => {
                 ? (currentMessageId = 0)
                 : (currentMessageId = move);
 
-            let firstChoice = story.messages[currentMessageId].firstChoice;
-            let secondChoice = story.messages[currentMessageId].secondChoice;
+            let firstChoiceName =
+                story.choices[story.messages[currentMessageId].firstChoice]
+                    .name;
+            let firstChoiceValue =
+                story.choices[story.messages[currentMessageId].firstChoice]
+                    .nextMessageId;
+
+            let secondChoiceName =
+                story.choices[story.messages[currentMessageId].secondChoice]
+                    .name;
+            let secondChoiceValue =
+                story.choices[story.messages[currentMessageId].secondChoice]
+                    .nextMessageId;
 
             move = await select({
                 message: `${story.messages[currentMessageId].message}`,
                 choices: [
                     {
-                        name: `${story.choices[firstChoice].name}`,
-                        value: `${story.choices[firstChoice].nextMessageId}`,
+                        name: `${firstChoiceName}`,
+                        value: `${firstChoiceValue}`,
                     },
                     {
-                        name: `${story.choices[secondChoice].name}`,
-                        value: `${story.choices[secondChoice].nextMessageId}`,
+                        name: `${secondChoiceName}`,
+                        value: `${secondChoiceValue}`,
                     },
                 ],
             });
