@@ -1,4 +1,5 @@
 import { select } from '@inquirer/prompts';
+import gameplay from './gameplay.js';
 
 const menu = async () => {
     let result = await select({
@@ -15,6 +16,7 @@ const menu = async () => {
         ],
     });
 
+    if (result === 0) gameplay();
     if (result === 1) process.exit();
 };
 
