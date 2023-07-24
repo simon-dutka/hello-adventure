@@ -1,4 +1,5 @@
 import figlet from 'figlet';
+import center from 'center-align';
 
 const title = () => {
     figlet('Hello Adventure', (err, title) => {
@@ -6,7 +7,7 @@ const title = () => {
             console.log('Something went wrong...');
             return;
         }
-        console.log(title);
+        console.log(center(title, process.stdout.columns));
     });
 };
 
