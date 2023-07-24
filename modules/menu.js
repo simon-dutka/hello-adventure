@@ -2,7 +2,7 @@ import { select } from '@inquirer/prompts';
 import gameplay from './gameplay.js';
 
 const menu = async () => {
-    let result = await select({
+    let menuChoice = await select({
         message: 'Menu',
         choices: [
             {
@@ -16,8 +16,14 @@ const menu = async () => {
         ],
     });
 
-    if (result === 0) gameplay();
-    if (result === 1) process.exit();
+    if (menuChoice === 0) {
+        console.clear();
+        gameplay();
+    }
+    if (menuChoice === 1) {
+        console.clear();
+        process.exit();
+    }
 };
 
 export default menu;
