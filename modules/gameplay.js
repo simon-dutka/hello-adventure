@@ -15,7 +15,7 @@ const gameplay = async () => {
     let nickname;
 
     const getNickname = async () => {
-        nickname = await input({ message: 'Enter your name' });
+        nickname = await input({ message: 'Enter your nickname' });
 
         while (nickname.length === 0 || nickname.length > 24) {
             if (nickname.length === 0) {
@@ -24,7 +24,7 @@ const gameplay = async () => {
                 console.log('Nickname can not have more than 24 characters');
             }
 
-            nickname = await input({ message: 'Enter your name' });
+            nickname = await input({ message: 'Enter your nickname' });
         }
 
         console.clear();
