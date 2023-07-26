@@ -9,8 +9,14 @@
         {
             "id": 1,
             "message": "message 1",
-            "firstChoice": 2,
-            "secondChoice": 3
+            "firstChoice": 0,
+            "secondChoice": 1
+        },
+        {
+            "id": 2,
+            "message": "message 2",
+            "firstChoice": 0,
+            "secondChoice": 1
         }
     ],
     "choices": [
