@@ -1,5 +1,5 @@
 import { readFile } from 'node:fs';
-import { select } from '@inquirer/prompts';
+import { select, input } from '@inquirer/prompts';
 import title from './title.js';
 import figlet from 'figlet';
 import center from 'center-align';
@@ -7,7 +7,21 @@ import center from 'center-align';
 // While game is on this value is true
 let gameStatus = true;
 
-const gameplay = () => {
+let steps = 0;
+
+const gameplay = async () => {
+    if (steps === 0) {
+        title();
+    }
+
+    const getNickname = async () => {
+        const nickname = await input({ message: 'Enter your name' });
+        console.clear();
+    };
+
+    await getNickname();
+    steps++;
+
     readFile('./story.json', 'utf-8', async (err, data) => {
         if (err) throw err;
         let story = JSON.parse(data);
@@ -15,7 +29,9 @@ const gameplay = () => {
         let currentMessageId, move;
 
         while (gameStatus) {
-            title();
+            if (steps !== 0) {
+                title();
+            }
 
             currentMessageId === undefined
                 ? (currentMessageId = 0)
