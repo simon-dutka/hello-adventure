@@ -10,12 +10,23 @@ let gameStatus = true;
 let steps = 0;
 
 const gameplay = async () => {
-    if (steps === 0) {
-        title();
-    }
+    if (steps === 0) title();
+
+    let nickname;
 
     const getNickname = async () => {
-        const nickname = await input({ message: 'Enter your name' });
+        nickname = await input({ message: 'Enter your name' });
+
+        while (nickname.length === 0 || nickname.length > 24) {
+            if (nickname.length === 0) {
+                console.log('Nickname must have minimum 1 character');
+            } else {
+                console.log('Nickname can not have more than 24 characters');
+            }
+
+            nickname = await input({ message: 'Enter your name' });
+        }
+
         console.clear();
     };
 
@@ -29,9 +40,7 @@ const gameplay = async () => {
         let currentMessageId, move;
 
         while (gameStatus) {
-            if (steps !== 0) {
-                title();
-            }
+            if (steps !== 0) title();
 
             currentMessageId === undefined
                 ? (currentMessageId = 0)
