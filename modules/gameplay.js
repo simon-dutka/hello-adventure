@@ -33,9 +33,9 @@ const gameplay = async () => {
     await getNickname();
     steps++;
 
-    readFile('./story.json', 'utf-8', async (err, data) => {
+    readFile('./script.json', 'utf-8', async (err, data) => {
         if (err) throw err;
-        let story = JSON.parse(data);
+        let script = JSON.parse(data);
 
         let currentMessageId, move;
 
@@ -47,21 +47,21 @@ const gameplay = async () => {
                 : (currentMessageId = move);
 
             let firstChoiceName =
-                story.choices[story.messages[currentMessageId].firstChoice]
+                script.choices[script.messages[currentMessageId].firstChoice]
                     .name;
             let firstChoiceValue =
-                story.choices[story.messages[currentMessageId].firstChoice]
+                script.choices[script.messages[currentMessageId].firstChoice]
                     .nextMessageId;
             let secondChoiceName =
-                story.choices[story.messages[currentMessageId].secondChoice]
+                script.choices[script.messages[currentMessageId].secondChoice]
                     .name;
             let secondChoiceValue =
-                story.choices[story.messages[currentMessageId].secondChoice]
+                script.choices[script.messages[currentMessageId].secondChoice]
                     .nextMessageId;
 
             // End game if it was last message
             // Todo: Change number to last message ID
-            if (story.messages[currentMessageId].id === 100) {
+            if (script.messages[currentMessageId].id === 100) {
                 gameStatus = false;
                 console.clear();
                 console.log('End message');
@@ -78,7 +78,7 @@ const gameplay = async () => {
             }
 
             move = await select({
-                message: `${story.messages[currentMessageId].message}`,
+                message: `${script.messages[currentMessageId].message}`,
                 choices: [
                     {
                         name: `${firstChoiceName}`,
